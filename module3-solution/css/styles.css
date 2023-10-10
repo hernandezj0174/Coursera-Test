@@ -1,0 +1,29 @@
+.navbar {
+    border-radius: 0;
+    border: 0;
+    height: 100px;
+}
+
+#chicken {
+    background-color: #ffcf4d;
+    margin-top: 25px;
+}
+
+#beef {
+    background-color: #ff4d52;
+    margin-top: 25px;
+}
+
+#sushi {
+    background-color: #96ff8f;
+    margin-top: 25px;
+}
+
+#nav-list {
+    margin-top: 50px;
+    background-color: #c9c9c9;
+}
+
+#nav-list a {
+    color: black;
+}

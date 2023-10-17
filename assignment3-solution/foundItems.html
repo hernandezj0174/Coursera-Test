@@ -1,0 +1,5 @@
+<ul>
+    <li ng-repeat="item in NarrowCtrl.items">
+        {{ item }} <button ng-click="NarrowCtrl.onRemove({index: $index});">Remove Item</button>
+    </li>
+</ul>

@@ -48,17 +48,21 @@ function MenuSearchService ($http) {
         })
         .then(function successCallback(response) {
             foundItems = [];
-            for (const category in response.data) {
-                for (var i = 0; i < response.data[category].menu_items.length; i++) {
-                    var description = response.data[category].menu_items[i].description;
-                    description = description.toLowerCase();
-                    if (description.includes(searchTerm)) {
-                        foundItems.push(response.data[category].menu_items[i]);
+
+            if (searchTerm) {
+                for (const category in response.data) {
+                    for (var i = 0; i < response.data[category].menu_items.length; i++) {
+                        var description = response.data[category].menu_items[i].description;
+                        description = description.toLowerCase();
+                        if (description.includes(searchTerm)) {
+                            foundItems.push(response.data[category].menu_items[i]);
+                        }
                     }
                 }
-            }
 
-            return foundItems;
+                return foundItems;
+            }
+            
         },
         function errorCallback(response) {
             console.log("Something went terribly wrong!");

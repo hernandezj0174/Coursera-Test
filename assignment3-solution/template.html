@@ -1,5 +1,8 @@
+<br><br><br>
 <ul>
-    <li ng-repeat="item in NarrowCtrl.found">
-        {{ item.name }}, {{ item.short_name }}, {{ item.description }} <button>Remove Item</button>
+    <li ng-repeat="item in items">
+        {{ item.name }}, {{ item.short_name }}, {{ item.description }} <button ng-click="onRemove({index: $index});">Don't want this one!</button>
     </li>
 </ul>
+
+<span ng-if="items.length === 0">Nothing Found!</span>

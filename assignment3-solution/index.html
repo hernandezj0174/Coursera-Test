@@ -16,14 +16,8 @@
     <div class="form-group narrow-button">
       <button ng-click="NarrowCtrl.search(userInput)" class="btn btn-primary">Narrow It Down For Me!</button>
     </div>
-    
-    <!-- <ul>
-      <li ng-repeat="item in NarrowCtrl.found">
-        {{ item.name }}
-      </li>
-    </ul> -->
 
-    <found-items items="NarrowCtrl.found" on-remove="...."></found-items>
+    <found-items items="NarrowCtrl.found" on-remove="NarrowCtrl.remove(index)"></found-items>
   </div>
 
   <script src="angular.js"></script>

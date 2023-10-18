@@ -9,7 +9,8 @@ angular.module("NarrowItDownApp", [])
 function FoundItemsDirective () {
     var ddo = {
         scope: {
-            items: '<'
+            items: '<',
+            onRemove: '&'
         },
         templateUrl: 'template.html'
     };
@@ -28,23 +29,29 @@ function NarrowItDownController (MenuSearchService) {
             narrow.found = response;
         })
     };
+
+    narrow.remove = function (index) {
+        MenuSearchService.remove(index);
+    };
 };
 
 MenuSearchService.$inject = ['$http'];
 function MenuSearchService ($http) {
     var service = this;
 
-    service.getMatchedMenuItems = function (searchTerm) {
+    var foundItems = [];
+
+    service.getMatchedMenuItems = function(searchTerm) {
         return $http ({
             method: 'GET',
             url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
         })
         .then(function successCallback(response) {
-            var foundItems = [];
-
+            foundItems = [];
             for (const category in response.data) {
                 for (var i = 0; i < response.data[category].menu_items.length; i++) {
                     var description = response.data[category].menu_items[i].description;
+                    description = description.toLowerCase();
                     if (description.includes(searchTerm)) {
                         foundItems.push(response.data[category].menu_items[i]);
                     }
@@ -56,6 +63,10 @@ function MenuSearchService ($http) {
         function errorCallback(response) {
             console.log("Something went terribly wrong!");
         });
+    };
+
+    service.remove = function(index) {
+        foundItems.splice(index, 1);
     };
 };
 

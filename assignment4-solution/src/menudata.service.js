@@ -25,8 +25,19 @@ function MenuDataService ($http) {
     };
 
     service.getItemsForCategory = function(categoryShortName) {
-        // return $http ({})
-        // https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/%7BcategoryShortName%7D.json
+        var menu_items = [];
+
+        return $http ({
+            method: 'GET',
+            url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/' + categoryShortName + '.json'
+        })
+        .then(function successCallback(response) {
+            for (var i = 0; i < response.data.menu_items.length; i++) {
+                menu_items.push(response.data.menu_items[i]);
+            }
+
+            return menu_items;
+        })
     };
 };
 

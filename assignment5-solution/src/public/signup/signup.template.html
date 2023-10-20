@@ -1,0 +1,50 @@
+<div class="container">
+    <fieldset>
+        <legend class="signUpTitle">Sign Up</legend>
+        <form class="signUpForm" name='regForm' novalidate>
+
+            <!-- First Name -->
+            <input type="text" name="firstName" placeholder="First Name" ng-model="signupCtrl.user.firstName" required>
+            <span ng-if="regForm.firstName.$error.required && regForm.firstName.$touched">First Name is required.</span><br>
+
+            <!-- Last Name -->
+            <input type="text" name="lastName" placeholder="Last Name" ng-model="signupCtrl.user.lastName" required>
+            <span ng-if="regForm.lastName.$error.required && regForm.lastName.$touched">Last Name is required.</span><br>
+
+            
+            <!-- Email -->
+            <input type="email" name="email" placeholder="Email" ng-model="signupCtrl.user.email" required>
+            <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+                Must be a valid email address: handle@domain format
+            </span><br>
+            
+            
+            <!-- Phone Number -->
+            <input type="text" name="phone" placeholder="Phone ###-###-####" ng-model="signupCtrl.user.phone" pattern="(\d{3})-(\d{3})-(\d{4})" required>
+            <span ng-if="regForm.phone.$error.pattern || regForm.phone.$error.required && regForm.phone.$touched">
+                Phone must be in the format ###-###-####.
+            </span><br>
+                
+
+            <!-- Favorite Dish -->
+            <input type="text" name="favoriteDish" placeholder="Favorite Dish Number" ng-model="signupCtrl.user.favoriteDish"><br>
+
+
+            <!-- Submit Button -->
+            <button ng-disabled="regForm.$invalid" ng-click="reg.submit()">Submit</button>
+
+
+            <!-- Sucess Message -->
+            <div ng-if="" style="margin-top: 10px;">
+                Form valid? {{ regForm.$valid }}
+            </div>
+
+
+            <!-- Error Message -->
+            <div ng-if="" style="margin-top: 10px;">
+                Form valid? {{ regForm.$valid }}
+            </div>
+
+        </form>
+    </fieldset>
+</div>

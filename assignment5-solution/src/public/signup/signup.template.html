@@ -27,23 +27,19 @@
                 
 
             <!-- Favorite Dish -->
-            <input type="text" name="favoriteDish" placeholder="Favorite Dish Number" ng-model="signupCtrl.user.favoriteDish"><br>
+            <input type="text" name="favoriteItem" placeholder="Favorite Dish Number" ng-model="signupCtrl.user.favoriteItem"><br>
 
 
             <!-- Submit Button -->
-            <button ng-disabled="regForm.$invalid" ng-click="reg.submit()">Submit</button>
+            <button ng-disabled="regForm.$invalid" ng-click="signupCtrl.submit()">Submit</button>
 
 
-            <!-- Sucess Message -->
-            <div ng-if="" style="margin-top: 10px;">
-                Form valid? {{ regForm.$valid }}
-            </div>
+            <!-- Success Message -->
+            <h3 class="submitSuccess" ng-if="signupCtrl.httpSuccess" style="margin-top: 10px;">Your information has been saved!</h3>
 
 
             <!-- Error Message -->
-            <div ng-if="" style="margin-top: 10px;">
-                Form valid? {{ regForm.$valid }}
-            </div>
+            <h3 class="submitFail" ng-if="signupCtrl.httpFail" style="margin-top: 10px;">Form valid? {{ regForm.$valid }}</h3>
 
         </form>
     </fieldset>

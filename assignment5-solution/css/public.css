@@ -125,6 +125,14 @@ h3.menu-item-title {
 .signUpForm button {
   color: black;
 }
+
+.submitSuccess {
+  color: green;
+}
+
+.submitFail {
+  color: red;
+}
 /* END SIGN UP PAGE */
 
 
